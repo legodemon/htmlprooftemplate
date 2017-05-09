@@ -5,7 +5,7 @@ module.exports = function (gulp, plugins, pathIn, pathOut) {
             .pipe(plugins.base64({
                 extensions: ['svg', 'png', 'jpg', /\.jpg#datauri$/i],
                 exclude: [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
-                maxImageSize: 100 * 1024, // bytes
+                maxImageSize: 10000 * 1024, // bytes
                 debug: true
             }))
             .pipe(plugins.autoprefixer({

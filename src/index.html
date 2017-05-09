@@ -1,0 +1,152 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/app.css"/>
+    <script src="http://web.bali.trunk.alpari-ru.dom/js/bali.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="rightbinary">
+    <div class="rightbinary-widget">
+        <div class="rightbinary-widget-title">Заработайте до 100% всего за 30 секунд</div>
+        <div class="rightbinary-widget-app" id="app"></div>
+    </div>
+    <div class="rightbinary-explanation">
+        <div class="rightbinary-explanation-title">Бинарные опционы — это просто и выгодно</div>
+        <div class="rightbinary-explanation-steps">
+            <div class="rightbinary-explanation-steps-first">
+                <div class="rightbinary-explanation-steps-first-image"></div>
+                <div class="rightbinary-explanation-steps-first-text">Выберите актив для сделки</div>
+            </div>
+            <div class="rightbinary-explanation-steps-arrow"></div>
+            <div class="rightbinary-explanation-steps-second">
+                <div class="rightbinary-explanation-steps-second-image"></div>
+                <div class="rightbinary-explanation-steps-second-text">Определите, куда пойдет цена</div>
+            </div>
+            <div class="rightbinary-explanation-steps-arrow"></div>
+            <div class="rightbinary-explanation-steps-third">
+                <div class="rightbinary-explanation-steps-third-image"></div>
+                <div class="rightbinary-explanation-steps-third-text">Выводите прибыль удобным способом</div>
+            </div>
+        </div>
+    </div>
+    <div class="rightbinary-advantages">
+        <div class="rightbinary-advantages-title">Преимущества платформы</div>
+        <div class="rightbinary-advantages-content">
+            <div class="rightbinary-advantages-content-image"></div>
+
+            <div class="rightbinary-advantages-content-options">
+                <div class="rightbinary-advantages-content-options-item"><span
+                        class="rightbinary-advantages-content-options-item-check"></span>Минимальная сделка<span
+                        class="rightbinary-advantages-content-options-item-yellow">100 рублей</span>
+                </div>
+                <div class="rightbinary-advantages-content-options-item"><span
+                        class="rightbinary-advantages-content-options-item-check"></span>Срок исполнения опциона<span
+                        class="rightbinary-advantages-content-options-item-yellow">от 30 секунд</span>
+                </div>
+                <div class="rightbinary-advantages-content-options-item"><span
+                        class="rightbinary-advantages-content-options-item-check"></span>Бонус за пополнение<span
+                        class="rightbinary-advantages-content-options-item-yellow">до 100%</span>
+                </div>
+                <div class="rightbinary-advantages-content-options-item">
+                    <span class="rightbinary-advantages-content-options-item-check"></span>Максимальная прибыль<span
+                        class="rightbinary-advantages-content-options-item-yellow">до 100%</span>
+                </div>
+
+                <div class="rightbinary-advantages-content-options-dotted"></div>
+
+                <div class="rightbinary-advantages-content-options-open">
+                    <a href="#" class="rightbinary-button-standard-orange">Открыть торговый счёт</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightbinary-payment">
+        <div class="rightbinary-payment-banners">
+            <div class="rightbinary-payment-banners-title">Ввод и вывод средств через надежные сервисы</div>
+            <div class="rightbinary-payment-banners-content">
+                <a href="#" title="visa" class="rightbinary-payment-banners-content-link rightbinary-visa"></a>
+                <a href="#" title="mastercard"
+                   class="rightbinary-payment-banners-content-link rightbinary-mastercard"></a>
+                <a href="#" title="yamoney" class="rightbinary-payment-banners-content-link rightbinary-yamoney"></a>
+                <a href="#" title="qiwi" class="rightbinary-payment-banners-content-link rightbinary-qiwi"></a>
+                <a href="#" title="webmoney" class="rightbinary-payment-banners-content-link rightbinary-webmoney"></a>
+                <a href="#" title="skrill" class="rightbinary-payment-banners-content-link rightbinary-skrill"></a>
+                <a href="#" title="neteller" class="rightbinary-payment-banners-content-link rightbinary-neteller"></a>
+            </div>
+        </div>
+        <div class="rightbinary-payment-divider"></div>
+        <div class="rightbinary-payment-title">
+            <p>Готовы получить прибыль?</p>
+            <p>Самое лучшее время — сейчас!</p>
+        </div>
+        <div class="rightbinary-payment-email">
+            <div class="rightbinary-payment-email-title">Ваш e-mail:</div>
+            <input title="email" class="rightbinary-payment-email-input"/>
+            <div class="rightbinary-payment-email-send">
+                <a href="#" class="rightbinary-button-standard-orange">Открыть счёт</a>
+            </div>
+        </div>
+    </div>
+    <div class="rightbinary-copyright">
+        <p>Binary Options., Victoria Place, 31 Victoria Street, Hamilton HM 10, Bermuda, is registered under number
+            48025.</p>
+        <p>Уведомление о рисках: торговля на финансовых рынках сопряжена с рисками. Никогда не инвестируйте больше
+            средств, чем можете позволить себе потерять. Начиная работать, убедитесь, что вы имеете достаточный уровень
+            подготовки.</p>
+        <p>Уведомление об ограничениях: компания Binary Options. не оказывает услуги лицам, постоянно проживающим на
+            территории США, Великобритании, Японии, Канады, Бермуд и некоторых других стран.</p>
+        <p>© 2017 Binary Options.</p>
+    </div>
+</div>
+<script>
+    const param = function (name) {
+        var query = document.location.search.split('+').join(' '),
+            params = {},
+            tokens,
+            re = /[?&]?([^=]+)=([^&]*)/g;
+
+        while (tokens = re.exec(query)) {
+            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+        }
+
+        return params[name];
+    };
+
+    var host = window.location.hostname,
+        proto = 'ws';
+
+    if (host.indexOf('bali') === -1) {
+        host = 'bali.trunk.alpari-ru.dom';
+    }
+    if (window.location.protocol.substr(-2, 1) === 's') {
+        proto += 's';
+    }
+
+    host = param('host') || proto + '://' + host + ':8004';
+
+    const token = param('token') || 'p24d545382bf132265c7bcb71acddbae0',
+        isGuest = !!param('guest') || false,
+        theme = param('theme') || 'dark',
+        locale = param('locale') || 'ru',
+        links = {
+            mobileapp: {
+                appstore: 'https://itunes.apple.com/ru/app/alpari-options/id1087276550?mt=8',
+                playmarket: 'https://play.google.com/store/apps/details?id=gtt.android.apps.invest'
+            },
+            protectionrate: 'http://www.alpari.ru/ru/promo_bonus/promo/agent-protection-rate/',
+            freedeal: 'http://www.alpari.ru/ru/promo_bonus/promo/free-binary-options-for-everyone/'
+        },
+        arg = {
+            element: document.getElementById('app'),
+            host: host,
+            token: token,
+            isGuest: isGuest,
+            locale: locale,
+            theme: theme,
+            links: links
+        };
+
+    new Bali(arg);
+
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ var path = {
             app: 'src/js/app.js'
         },
         style: {
-            sassListen: 'src/styles/**/*.scss',
+            sassListen: 'src/sass/**/*.scss',
             sassBundle: 'src/sass/app.scss'
         },
         img: 'src/svg/**/*.*',
@@ -36,12 +36,12 @@ gulp.task('compile-style-sass', require('./gulp-tasks/compile-style-sass')(gulp,
 gulp.task('compile-fonts', require('./gulp-tasks/fonts')(gulp, plugins, path.src.fonts, path.styles));
 
 gulp.task('webserver-local', require('./gulp-tasks/webserver-local')(gulp, plugins));
+gulp.task('webserver-ip', require('./gulp-tasks/webserver-ip')(gulp, plugins));
 
 gulp.task('watcher', function () {
     gulp.watch(path.src.html, ['copy-html']);
-    gulp.watch(path.src.js.dir + '/**/*.*', ['compile-js']);
-    gulp.watch(path.src.style.css, ['compile-style']);
-    gulp.watch(path.src.style.sassListen, ['compile-style']);
+    gulp.watch(path.src.js.dir + '/**/*.*', ['copy-js']);
+    gulp.watch(path.src.style.sassListen, ['compile-style-sass']);
     gulp.watch(path.src.img, ['compile-style']);
     gulp.watch(path.src.loader, ['compile-loader']);
 });

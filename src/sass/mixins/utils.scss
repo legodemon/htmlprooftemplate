@@ -1,0 +1,96 @@
+/*
+ * explode Given from http://www.justinnavarro.net/blog2/2015/02/08/sass-explode-function/
+ */
+@function explode($string,$dem) {
+  $list: ();
+  $sum: str-length($string);
+
+  @for $i from 1 through $sum {
+    $str: str-index($string, $dem);
+
+    @if str-length($string) >= 1 and $str == null {
+      $list: append($list, $string);
+      $string: '';
+    }
+    @if type-of($str) == number {
+      $each: str-slice($string, 0, ($str - 1));
+      $list: append($list, $each);
+      $string: str-slice($string, ($str + 1), $sum);
+    }
+  }
+  @return $list;
+}
+
+$baseFontSize : 16;
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@mixin flex-container($direction: row, $main-axis: flex-start, $cross-axis: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+@mixin set-icon-size($width, $height) {
+  width: $width;
+  min-width: $width;
+  height: $height;
+  min-height: $height;
+  background-repeat: no-repeat;
+  background-size:$width $height;
+}
+
+@function get-image-path($icon){
+  $parts: explode($icon, '_');
+  $path: "";
+  $end: length($parts)-1;
+
+  @for $i from 1 through $end {
+    $path: $path + '/' + nth($parts, $i);
+  }
+
+  @return url('../images#{$path}/#{$icon}');
+}
+
+@mixin get-image($icon) {
+  $parts: explode($icon, '_');
+  $path: "";
+  $end: length($parts)-1;
+
+  @for $i from 1 through $end {
+    $path: $path + '/' + nth($parts, $i);
+  }
+
+  background-image: url('../images#{$path}/#{$icon}') !important;
+}
+
+@mixin stroke($width, $color) {
+  $shadow: ();
+  @for $i from -$width through $width {
+    $shadow: append($shadow,#{$width}px #{$i}px $color, comma);
+    $shadow: append($shadow,#{-$width}px #{$i}px $color, comma);
+    $shadow: append($shadow,#{$i}px #{$width}px $color, comma);
+    $shadow: append($shadow,#{$i}px #{-$width}px $color, comma);
+  }
+  text-shadow: $shadow;
+}
+
+@mixin divider($color, $height: 11px, $width: 20px){
+  &:before {
+    content: ' ';
+    height: $height;
+    margin-left: $width/2;
+    margin-right: $width/2;
+    border-left: 1px solid $color;
+  }
+}

@@ -1,3 +1,326 @@
-.tst {
-  color: red;
+@import "mixins/utils";
+
+$projectName: rightbinary;
+
+$primaryWidth: rem(1070px);
+
+body {
+  font-family: Arial, sans-serif;
+
+  //http://sixrevisions.com/css/responsive-background-image/
+  @include get-image('bg_platform.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  margin: 0;
+
+  .#{$projectName} {
+    @include flex-container(column, center, center);
+
+    .#{$projectName}-widget {
+      @include flex-container(column, center, center);
+
+      .#{$projectName}-widget-title {
+        width: $primaryWidth;
+        font-size: 90px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: rem(42px);
+      }
+
+      .#{$projectName}-widget-app {
+        box-shadow: -10px 10px 30px 0px rgba(0, 0, 0, 0.5);
+        margin-bottom: rem(85px);
+      }
+    }
+
+    .#{$projectName}-explanation {
+      width: 100%;
+      background-color: #eaeef4;
+
+      @include flex-container(column, center, center);
+
+      .#{$projectName}-explanation-title {
+        width: $primaryWidth;
+        font-size: rem(46px);
+        font-weight: bold;
+        color: #333333;
+        text-align: center;
+        margin-top: rem(60px);
+      }
+
+      .#{$projectName}-explanation-steps-arrow {
+        @include get-image('explanation_arrow.png');
+        @include set-icon-size(rem(31px), rem(54px));
+        margin-bottom: rem(85px);
+      }
+
+      .#{$projectName}-explanation-steps {
+        @include flex-container(row, space-between, center);
+        margin-top: rem(70px);
+        margin-bottom: rem(90px);
+        width: $primaryWidth;
+
+        .#{$projectName}-explanation-steps-first {
+          @include flex-container(column, space-between, center);
+          width: rem(290px);
+
+          .#{$projectName}-explanation-steps-first-image {
+            @include get-image('explanation_first.png');
+            @include set-icon-size(rem(282px), rem(293px));
+          }
+
+          .#{$projectName}-explanation-steps-first-text {
+            text-align: center;
+            width: 70%;
+            font-size: 24px;
+            color: #333333;
+            margin-top: 35px;
+          }
+        }
+
+        .#{$projectName}-explanation-steps-second {
+          @include flex-container(column, space-between, center);
+          width: rem(290px);
+
+          .#{$projectName}-explanation-steps-second-image {
+            @include get-image('explanation_second.png');
+            @include set-icon-size(rem(286px), rem(292px));
+          }
+
+          .#{$projectName}-explanation-steps-second-text {
+            text-align: center;
+            width: 68%;
+            font-size: 24px;
+            color: #333333;
+            margin-top: 35px;
+          }
+        }
+
+        .#{$projectName}-explanation-steps-third {
+          @include flex-container(column, space-between, center);
+          width: rem(290px);
+
+          .#{$projectName}-explanation-steps-third-image {
+            @include get-image('explanation_third.png');
+            @include set-icon-size(rem(287px), rem(292px));
+          }
+          .#{$projectName}-explanation-steps-third-text {
+            text-align: center;
+            width: 74%;
+            font-size: 24px;
+            color: #333333;
+            margin-top: 35px;
+          }
+        }
+      }
+    }
+
+    .#{$projectName}-advantages {
+      @include flex-container(column, center, center);
+
+      width: 100%;
+      background-color: #2c3e50;
+
+      .#{$projectName}-advantages-title {
+        width: $primaryWidth;
+        font-size: rem(72px);
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        margin-top: rem(60px);
+      }
+
+      .#{$projectName}-advantages-content {
+        @include flex-container(row, space-around, flex-start);
+        width: $primaryWidth;
+        margin-top: rem(60px);
+        margin-bottom: rem(75px);
+
+        .#{$projectName}-advantages-content-image {
+          @include get-image('advantages_monitor.png');
+          @include set-icon-size(rem(645px), rem(538px));
+        }
+        .#{$projectName}-advantages-content-options {
+
+          .#{$projectName}-advantages-content-options-item {
+            @include flex-container(row, flex-start, center);
+            font-size: rem(18px);
+            color: #ffffff;
+            margin-bottom: rem(18px);
+
+            .#{$projectName}-advantages-content-options-item-check {
+              @include get-image('advantages_check.png');
+              @include set-icon-size(rem(23px), rem(28px));
+              display: inline-block;
+              margin-right: rem(5px);
+            }
+
+            .#{$projectName}-advantages-content-options-item-yellow {
+              color: #ffbe4b;
+              &:before {
+                content: "\00a0 ";
+              }
+            }
+          }
+
+          .#{$projectName}-advantages-content-options-dotted {
+            @include get-image('advantages_dotted.png');
+            @include set-icon-size(rem(353px), rem(4px));
+            margin-top: rem(38px);
+            margin-left: rem(28px);
+          }
+
+          .#{$projectName}-advantages-content-options-open {
+            margin-left: rem(28px);
+            margin-top: rem(43px);
+          }
+
+        }
+      }
+    }
+
+    .#{$projectName}-payment {
+      @include flex-container(column, center, center);
+
+      width: 100%;
+      background-color: #ffffff;
+
+      .#{$projectName}-payment-banners {
+        margin-top: rem(60px);
+
+        .#{$projectName}-payment-banners-title {
+          width: $primaryWidth;
+          font-size: rem(24px);
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: rem(15px);
+        }
+        .#{$projectName}-payment-banners-content {
+          @include flex-container(row, space-around, center);
+          width: $primaryWidth;
+
+          .#{$projectName}-payment-banners-content-link {
+            display: block;
+          }
+
+          $systems: (
+                  visa: (94px, 36px),
+                  mastercard: (68px, 42px),
+                  yamoney: (165px, 42px),
+                  qiwi: (109px, 48px),
+                  webmoney: (140px, 43px),
+                  skrill: (85px, 32px),
+                  neteller: (151px, 55px),
+          );
+
+          @each $name, $size in $systems {
+
+            .#{$projectName}-#{$name} {
+              @include get-image('payment_logo_#{$name}.png');
+              @include set-icon-size(rem(nth($size, 1)), rem(nth($size, 2)));
+            }
+
+          }
+        }
+      }
+
+      .#{$projectName}-payment-divider {
+        @include get-image('payment_dotted.png');
+        @include set-icon-size(rem(353px), rem(4px));
+        margin-top: rem(70px);
+        margin-bottom: rem(60px);
+      }
+
+      .#{$projectName}-payment-title {
+        @include flex-container(column, center, center);
+        width: $primaryWidth;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: rem(24px);
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .#{$projectName}-payment-email {
+        @include flex-container(column, center, center);
+        width: $primaryWidth;
+        margin-bottom: rem(80px);
+
+        .#{$projectName}-payment-email-title {
+          font-size: rem(18px);
+          margin-bottom: rem(10px);
+        }
+
+        .#{$projectName}-payment-email-input {
+          width: rem(330px);
+          height: rem(40px);
+          font-size: rem(24px);
+
+          background-color: white;
+          user-select: text;
+          cursor: auto;
+          padding: rem(1px);
+          border-width: rem(2px);
+          border-style: inset;
+          border-color: initial;
+          border-image: initial;
+          text-rendering: auto;
+          color: initial;
+          letter-spacing: normal;
+          word-spacing: normal;
+          text-transform: none;
+          text-indent: 0;
+          text-shadow: none;
+          display: inline-block;
+          text-align: start;
+          margin: 0;
+          margin-bottom: rem(21px);
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .#{$projectName}-payment-email-send {
+
+        }
+      }
+
+    }
+
+    .#{$projectName}-copyright {
+      @include flex-container(column, center, center);
+      background-color: #1a2531;
+      width: 100%;
+      padding-top: rem(65px);
+      padding-bottom: rem(62px);
+
+      p {
+        width: $primaryWidth;
+        color: #87919a;
+        text-align: center;
+        font-size: rem(12px);
+        margin: 0;
+        margin-bottom: rem(18px);
+      }
+    }
+
+  }
+}
+
+.#{$projectName}-button-standard-orange {
+  display: inline-block;
+  background-color: #e06a1b;
+  font-family: Arial, sans-serif;
+  font-size: rem(18px);
+  color: #ffffff;
+  padding: rem(11px);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
 }
