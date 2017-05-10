@@ -2,8 +2,65 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles/app.css"/>
     <script src="http://web.bali.trunk.alpari-ru.dom/js/bali.js" type="application/javascript"></script>
+    <script src="js/app.js" type="application/javascript"></script>
 </head>
 <body>
+<div class="menu">
+    <a class="toggleMenu" href="#">Menu</a>
+    <ul class="nav">
+    <div class="logo"></div>
+        <li>
+            <a href="#">Торговля</a>
+            <ul>
+                <li>
+                    <a href="#">Как начать зарабатывать</a>
+                </li>
+                <li>
+                    <a href="#">Условия торговли</a>
+                    <ul>
+                        <li><a href="#">Базовые понятия</a></li>
+                        <li><a href="#">Основы рыночного анализа</a></li>
+                        <li><a href="#">Торговая стратегия с нуля</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Виды опционов</a>
+                </li>
+                <li>
+                    <a href="#">Активы для торговли</a>
+                </li>
+                <li>
+                    <a href="#">Способы пополнения и снятия</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Акции и бонусы</a>
+        </li>
+        <li>
+            <a href="#">Обучение</a>
+        </li>
+        <li>
+            <a href="#">Ru</a>
+            <ul>
+                <li>
+                    <a href="#">Ru</a>
+                </li>
+                <li>
+                    <a href="#">En</a>
+                </li>
+            </ul>
+        </li>
+        <li id="signInBtn">
+            <a class="rightbinary-button-standard-white" href="#">Войти</a>
+        </li>
+        <li id="registrationBtn">
+            <a class="rightbinary-button-standard-orange" href="#">Открыть счёт</a>
+        </li>
+    </ul>
+</div>
+
+
 <div class="rightbinary">
     <div class="rightbinary-widget">
         <div class="rightbinary-widget-title">Заработайте до 100% всего за 30 секунд</div>
@@ -124,7 +181,7 @@
     host = param('host') || proto + '://' + host + ':8004';
 
     const token = param('token') || 'p24d545382bf132265c7bcb71acddbae0',
-        isGuest = !!param('guest') || false,
+        isGuest = !!param('guest') || true,
         theme = param('theme') || 'dark',
         locale = param('locale') || 'ru',
         links = {

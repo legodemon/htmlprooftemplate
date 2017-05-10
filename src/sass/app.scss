@@ -3,9 +3,16 @@
 $projectName: rightbinary;
 
 $primaryWidth: rem(1070px);
+$smallWidth: rem(700px);
 
 body {
+  a {
+    text-decoration: none;
+  }
+
   font-family: Arial, sans-serif;
+
+  @import "menu";
 
   //http://sixrevisions.com/css/responsive-background-image/
   @include get-image('bg_platform.jpg');
@@ -18,6 +25,7 @@ body {
 
   .#{$projectName} {
     @include flex-container(column, center, center);
+    padding-top: rem(47px);
 
     .#{$projectName}-widget {
       @include flex-container(column, center, center);
@@ -29,11 +37,19 @@ body {
         color: #ffffff;
         text-align: center;
         margin-bottom: rem(42px);
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
       }
 
       .#{$projectName}-widget-app {
         box-shadow: -10px 10px 30px 0px rgba(0, 0, 0, 0.5);
         margin-bottom: rem(85px);
+
+        @include apply-to(less-than) {
+          display: none;
+        }
       }
     }
 
@@ -50,19 +66,36 @@ body {
         color: #333333;
         text-align: center;
         margin-top: rem(60px);
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
       }
 
       .#{$projectName}-explanation-steps-arrow {
         @include get-image('explanation_arrow.png');
         @include set-icon-size(rem(31px), rem(54px));
         margin-bottom: rem(85px);
+
+        @include apply-to(less-than) {
+          display: none;
+        }
       }
 
       .#{$projectName}-explanation-steps {
         @include flex-container(row, space-between, center);
+
+        @include apply-to(less-than) {
+          @include flex-container(column, space-between, center);
+        }
+
         margin-top: rem(70px);
         margin-bottom: rem(90px);
         width: $primaryWidth;
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
 
         .#{$projectName}-explanation-steps-first {
           @include flex-container(column, space-between, center);
@@ -76,9 +109,16 @@ body {
           .#{$projectName}-explanation-steps-first-text {
             text-align: center;
             width: 70%;
-            font-size: 24px;
+            font-size: rem(24px);
             color: #333333;
-            margin-top: 35px;
+
+            @include apply-to(greater-than) {
+              margin-top: rem(35px);
+            }
+
+            @include apply-to(less-than) {
+              margin-bottom: rem(35px);
+            }
           }
         }
 
@@ -94,9 +134,16 @@ body {
           .#{$projectName}-explanation-steps-second-text {
             text-align: center;
             width: 68%;
-            font-size: 24px;
+            font-size: rem(24px);
             color: #333333;
-            margin-top: 35px;
+
+            @include apply-to(greater-than) {
+              margin-top: rem(35px);
+            }
+
+            @include apply-to(less-than) {
+              margin-bottom: rem(35px);
+            }
           }
         }
 
@@ -111,9 +158,16 @@ body {
           .#{$projectName}-explanation-steps-third-text {
             text-align: center;
             width: 74%;
-            font-size: 24px;
+            font-size: rem(24px);
             color: #333333;
-            margin-top: 35px;
+
+            @include apply-to(greater-than) {
+              margin-top: rem(35px);
+            }
+
+            @include apply-to(less-than) {
+              margin-bottom: rem(35px);
+            }
           }
         }
       }
@@ -132,10 +186,19 @@ body {
         color: #ffffff;
         text-align: center;
         margin-top: rem(60px);
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
       }
 
       .#{$projectName}-advantages-content {
-        @include flex-container(row, space-around, flex-start);
+        @include flex-container(row, space-between, flex-start);
+
+        @include apply-to(less-than) {
+          @include flex-container(column, space-between, center);
+        }
+
         width: $primaryWidth;
         margin-top: rem(60px);
         margin-bottom: rem(75px);
@@ -143,14 +206,27 @@ body {
         .#{$projectName}-advantages-content-image {
           @include get-image('advantages_monitor.png');
           @include set-icon-size(rem(645px), rem(538px));
+
+          @include apply-to(less-than) {
+            margin-bottom: 50px;
+          }
         }
         .#{$projectName}-advantages-content-options {
+
+          @include apply-to(less-than) {
+            @include flex-container(column, center, center);
+          }
 
           .#{$projectName}-advantages-content-options-item {
             @include flex-container(row, flex-start, center);
             font-size: rem(18px);
             color: #ffffff;
             margin-bottom: rem(18px);
+
+            @include apply-to(less-than) {
+              margin-left: rem(65px);
+              align-self: flex-start;
+            }
 
             .#{$projectName}-advantages-content-options-item-check {
               @include get-image('advantages_check.png');
@@ -171,12 +247,18 @@ body {
             @include get-image('advantages_dotted.png');
             @include set-icon-size(rem(353px), rem(4px));
             margin-top: rem(38px);
-            margin-left: rem(28px);
+
+            @include apply-to(greater-than) {
+              margin-left: rem(28px);
+            }
           }
 
           .#{$projectName}-advantages-content-options-open {
-            margin-left: rem(28px);
             margin-top: rem(43px);
+
+            @include apply-to(greater-than) {
+              margin-left: rem(28px);
+            }
           }
 
         }
@@ -190,6 +272,7 @@ body {
       background-color: #ffffff;
 
       .#{$projectName}-payment-banners {
+        @include flex-container(column, center, center);
         margin-top: rem(60px);
 
         .#{$projectName}-payment-banners-title {
@@ -198,10 +281,23 @@ body {
           font-weight: bold;
           text-align: center;
           margin-bottom: rem(15px);
+
+          @include apply-to(less-than) {
+            width: $smallWidth;
+          }
         }
         .#{$projectName}-payment-banners-content {
           @include flex-container(row, space-around, center);
           width: $primaryWidth;
+
+          @include apply-to(less-than) {
+            width: $smallWidth;
+            flex-wrap: wrap;
+          }
+
+          @include apply-to(less-than, 700px) {
+            width: rem(400px);
+          }
 
           .#{$projectName}-payment-banners-content-link {
             display: block;
@@ -242,8 +338,14 @@ body {
         font-weight: bold;
         margin-bottom: rem(24px);
 
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
+
         p {
           margin: 0;
+          text-align: center;
+          color: #333333;
         }
       }
 
@@ -267,8 +369,8 @@ body {
           cursor: auto;
           padding: rem(1px);
           border-width: rem(2px);
-          border-style: inset;
-          border-color: initial;
+          border-style: solid;
+          border-color: #d3d3d3;
           border-image: initial;
           text-rendering: auto;
           color: initial;
@@ -307,6 +409,10 @@ body {
         font-size: rem(12px);
         margin: 0;
         margin-bottom: rem(18px);
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
       }
     }
 
@@ -314,13 +420,25 @@ body {
 }
 
 .#{$projectName}-button-standard-orange {
-  display: inline-block;
-  background-color: #e06a1b;
-  font-family: Arial, sans-serif;
-  font-size: rem(18px);
-  color: #ffffff;
-  padding: rem(11px);
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
+  display: inline-block !important;
+  background-color: #e06a1b !important;
+  font-family: Arial, sans-serif !important;
+  font-size: rem(18px) !important;
+  color: #ffffff !important;
+  padding: rem(11px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  text-decoration: none !important;
+}
+
+.#{$projectName}-button-standard-white {
+  display: inline-block !important;
+  background-color: #ffffff !important;
+  font-family: Arial, sans-serif !important;
+  font-size: rem(18px) !important;
+  color: #000 !important;
+  padding: rem(11px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  text-decoration: none !important;
 }

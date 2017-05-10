@@ -1,0 +1,186 @@
+@import "mixins/utils";
+
+//http://bootsnipp.com/snippets/9y9eW
+
+$topLevelBg: #4d5c6b;
+$dropDownBg: #2a3e4f;
+
+nav, ul, li, a {
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  width: 100%;
+  background: $topLevelBg;
+
+
+  .logo {
+    @include get-image('logo_menu-wide.png');
+    @include set-icon-size(rem(237px), rem(34px));
+    display: inline-block;
+    float: left;
+    margin: rem(8px) rem(15px);
+  }
+
+  .toggleMenu {
+    display: none;
+    background: #666;
+    padding: rem(10px) rem(15px);
+    color: #fff;
+  }
+
+  #registrationBtn {
+    float: right;
+    padding: rem(5px) rem(5px);
+    a {
+      font-size: rem(15px) !important;
+    }
+    &.hover {
+      background: $topLevelBg;
+    }
+  }
+
+  #signInBtn {
+    float: right;
+
+    padding: rem(5px) rem(5px);
+    a {
+      font-size: rem(15px) !important;
+    }
+    &.hover {
+      background: $topLevelBg;
+    }
+  }
+
+  .nav {
+    list-style: none;
+    width: rem(1070px);
+    margin: 0 auto;
+
+    &:before {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      width: rem(250px);
+    }
+
+    a {
+      padding: 10px 15px;
+      color: #fff;
+    }
+
+    li {
+      position: relative;
+
+      ul {
+        position: absolute;
+        left: -9999px;
+      }
+
+      li.hover {
+        ul {
+          left: 100%;
+          top: 0;
+        }
+      }
+
+      li {
+
+        &.hover {
+          a {
+            background: $topLevelBg;
+          }
+          li {
+            a {
+              background: $dropDownBg;
+              &:hover {
+                background: $topLevelBg;
+              }
+            }
+          }
+        }
+
+        a {
+          display: block;
+          background: $dropDownBg;
+          position: relative;
+          z-index: 100;
+        }
+
+        li {
+          a {
+            background: $dropDownBg;
+            z-index: 200;
+          }
+        }
+      }
+    }
+
+    > li {
+      float: left;
+      //border-top: 1px solid #104336;
+
+      &.hover {
+        background: $dropDownBg;
+      }
+
+      > a {
+        display: block;
+        font-size: rem(15px);
+        font-weight: bold;
+        padding: rem(17px) rem(15px);
+      }
+    }
+
+    > li.hover > ul {
+      left: 0;
+    }
+  }
+
+}
+
+@include apply-to(less-than) {
+  .menu {
+    .logo {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+    .nav {
+      > li {
+        float: none !important;
+
+        > .parent {
+          background-position: 95% 50%;
+        }
+      }
+
+      ul {
+        display: block;
+        width: 100% !important;
+      }
+    }
+
+    .nav li li .parent {
+      background-image: url("http://webdesigntutsplus.s3.amazonaws.com/tuts/378_tessa/tessa-lt-dropdowns-21c7868/images/downArrow.png");
+      background-repeat: no-repeat;
+      background-position: 95% 50%;
+    }
+
+    .nav > li.hover > ul, .nav li li.hover ul {
+      position: static;
+    }
+  }
+}
