@@ -1,0 +1,38 @@
+@import "../mixins/utils";
+@import "../mixins/constants";
+
+.#{$projectName}-button-standard-orange {
+  display: inline-block !important;
+  background-color: #e06a1b !important;
+  font-family: Arial, sans-serif !important;
+  font-size: rem(18px) !important;
+  color: #ffffff !important;
+  padding: rem(11px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  text-decoration: none !important;
+}
+
+.#{$projectName}-button-standard-white {
+  display: inline-block !important;
+  background-color: #ffffff !important;
+  font-family: Arial, sans-serif !important;
+  font-size: rem(18px) !important;
+  color: #000 !important;
+  padding: rem(11px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  text-decoration: none !important;
+}
+
+.#{$projectName}-button-standard-grey {
+  display: inline-block !important;
+  background-color: $topLevelBg !important;
+  font-family: Arial, sans-serif !important;
+  font-size: rem(18px) !important;
+  color: $primaryWhite !important;
+  padding: rem(11px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  text-decoration: none !important;
+}

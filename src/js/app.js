@@ -1,11 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
-    [].forEach.call(document.querySelectorAll('.nav li'), function (element) {
-        element.addEventListener('mouseenter', function(){
-            element.classList.add('hover');
-        });
+import React from 'react';
+import ReactDom from 'react-dom';
+import Modal from 'react-modal';
 
-        element.addEventListener('mouseleave', function(){
-            element.classList.remove('hover')
-        });
+import SignIn from './forms/signin.jsx';
+import baliStart from './utils/binaryplatform.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const appEl = document.querySelector('#signInBtn');
+
+    Modal.setAppElement(appEl);
+
+    [].forEach.call(document.querySelectorAll('.nav li'), element => {
+        element.addEventListener('mouseenter', () => element.classList.add('hover'));
+
+        element.addEventListener('mouseleave', () => element.classList.remove('hover'));
     });
+
+    baliStart();
+
+    ReactDom.render((<SignIn/>), appEl);
+
 });

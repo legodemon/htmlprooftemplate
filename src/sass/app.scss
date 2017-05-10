@@ -1,18 +1,23 @@
 @import "mixins/utils";
-
-$projectName: rightbinary;
-
-$primaryWidth: rem(1070px);
-$smallWidth: rem(700px);
+@import "mixins/constants";
 
 body {
+
+  div {
+    &:focus {
+      outline: none;
+    }
+  }
+
   a {
     text-decoration: none;
   }
 
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif !important;
 
-  @import "menu";
+  @import "components/menu";
+  @import "components/modal";
+  @import "components/buttons";
 
   //http://sixrevisions.com/css/responsive-background-image/
   @include get-image('bg_platform.jpg');
@@ -34,7 +39,7 @@ body {
         width: $primaryWidth;
         font-size: 90px;
         font-weight: bold;
-        color: #ffffff;
+        color: $primaryWhite;
         text-align: center;
         margin-bottom: rem(42px);
 
@@ -63,7 +68,7 @@ body {
         width: $primaryWidth;
         font-size: rem(46px);
         font-weight: bold;
-        color: #333333;
+        color: $primaryBlack;
         text-align: center;
         margin-top: rem(60px);
 
@@ -110,7 +115,7 @@ body {
             text-align: center;
             width: 70%;
             font-size: rem(24px);
-            color: #333333;
+            color: $primaryBlack;
 
             @include apply-to(greater-than) {
               margin-top: rem(35px);
@@ -135,7 +140,7 @@ body {
             text-align: center;
             width: 68%;
             font-size: rem(24px);
-            color: #333333;
+            color: $primaryBlack;
 
             @include apply-to(greater-than) {
               margin-top: rem(35px);
@@ -159,7 +164,7 @@ body {
             text-align: center;
             width: 74%;
             font-size: rem(24px);
-            color: #333333;
+            color: $primaryBlack;
 
             @include apply-to(greater-than) {
               margin-top: rem(35px);
@@ -183,7 +188,7 @@ body {
         width: $primaryWidth;
         font-size: rem(72px);
         font-weight: bold;
-        color: #ffffff;
+        color: $primaryWhite;
         text-align: center;
         margin-top: rem(60px);
 
@@ -220,7 +225,7 @@ body {
           .#{$projectName}-advantages-content-options-item {
             @include flex-container(row, flex-start, center);
             font-size: rem(18px);
-            color: #ffffff;
+            color: $primaryWhite;
             margin-bottom: rem(18px);
 
             @include apply-to(less-than) {
@@ -281,6 +286,7 @@ body {
           font-weight: bold;
           text-align: center;
           margin-bottom: rem(15px);
+          color: $primaryBlack;
 
           @include apply-to(less-than) {
             width: $smallWidth;
@@ -337,6 +343,7 @@ body {
         font-size: 48px;
         font-weight: bold;
         margin-bottom: rem(24px);
+        color: $primaryBlack;
 
         @include apply-to(less-than) {
           width: $smallWidth;
@@ -345,7 +352,7 @@ body {
         p {
           margin: 0;
           text-align: center;
-          color: #333333;
+          color: $primaryBlack;
         }
       }
 
@@ -417,28 +424,4 @@ body {
     }
 
   }
-}
-
-.#{$projectName}-button-standard-orange {
-  display: inline-block !important;
-  background-color: #e06a1b !important;
-  font-family: Arial, sans-serif !important;
-  font-size: rem(18px) !important;
-  color: #ffffff !important;
-  padding: rem(11px) !important;
-  cursor: pointer !important;
-  user-select: none !important;
-  text-decoration: none !important;
-}
-
-.#{$projectName}-button-standard-white {
-  display: inline-block !important;
-  background-color: #ffffff !important;
-  font-family: Arial, sans-serif !important;
-  font-size: rem(18px) !important;
-  color: #000 !important;
-  padding: rem(11px) !important;
-  cursor: pointer !important;
-  user-select: none !important;
-  text-decoration: none !important;
 }

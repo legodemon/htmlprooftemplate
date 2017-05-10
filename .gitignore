@@ -142,3 +142,4 @@ $RECYCLE.BIN/
 *.lnk
 
 /build/
+browserify-cache.json

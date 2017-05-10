@@ -30,8 +30,8 @@ var path = {
 
 gulp.task('clean', require('./gulp-tasks/clean')(gulp, plugins, path.build.dir));
 gulp.task('copy-html', require('./gulp-tasks/copy-html')(gulp, plugins, path.src.html, path.build.dir));
-gulp.task('copy-js', require('./gulp-tasks/copy')(gulp, path.src.js.app, path.build.scripts));
-// gulp.task('compile-js', require('./gulp-tasks/compile-js')(gulp, plugins, path.src.js.bootstrap, path.bundle, path.dev.scripts));
+// gulp.task('copy-js', require('./gulp-tasks/copy')(gulp, path.src.js.app, path.build.scripts));
+gulp.task('compile-js', require('./gulp-tasks/compile-js')(gulp, plugins, path.src.js.app, 'app.js', path.build.scripts));
 gulp.task('compile-style-sass', require('./gulp-tasks/compile-style-sass')(gulp, plugins, path.src.style.sassBundle, path.build.styles));
 gulp.task('compile-fonts', require('./gulp-tasks/fonts')(gulp, plugins, path.src.fonts, path.styles));
 
@@ -40,7 +40,7 @@ gulp.task('webserver-ip', require('./gulp-tasks/webserver-ip')(gulp, plugins));
 
 gulp.task('watcher', function () {
     gulp.watch(path.src.html, ['copy-html']);
-    gulp.watch(path.src.js.dir + '/**/*.*', ['copy-js']);
+    gulp.watch(path.src.js.dir + '/**/*.*', ['compile-js']);
     gulp.watch(path.src.style.sassListen, ['compile-style-sass']);
     gulp.watch(path.src.img, ['compile-style']);
     gulp.watch(path.src.loader, ['compile-loader']);
@@ -49,7 +49,7 @@ gulp.task('watcher', function () {
 gulp.task('default', function () {
     plugins.runSequence(
         'clean',
-        ['copy-html', 'copy-js'],
+        ['copy-html', 'compile-js'],
         ['compile-style-sass'],
         'webserver-local',
         'watcher'

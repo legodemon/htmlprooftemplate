@@ -1,10 +1,7 @@
-@import "mixins/utils";
+@import "../mixins/utils";
+@import "../mixins/constants";
 
 //http://bootsnipp.com/snippets/9y9eW
-
-$topLevelBg: #4d5c6b;
-$dropDownBg: #2a3e4f;
-
 nav, ul, li, a {
   margin: 0;
   padding: 0;
@@ -27,7 +24,7 @@ nav, ul, li, a {
     display: none;
     background: #666;
     padding: rem(10px) rem(15px);
-    color: #fff;
+    color: $primaryWhite;
   }
 
   #registrationBtn {
@@ -76,7 +73,7 @@ nav, ul, li, a {
 
     a {
       padding: 10px 15px;
-      color: #fff;
+      color: $primaryWhite;
     }
 
     li {
