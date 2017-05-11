@@ -44,42 +44,26 @@
 
     .#{$primaryClsName}-body {
 
-      .#{$primaryClsName}-body-email {
+      .#{$primaryClsName}-body-input {
         @include flex-container(row, space-around, center);
         padding-top: rem(18px);
-        .#{$primaryClsName}-body-email-label {
+        .#{$primaryClsName}-body-input-label {
           width: rem(56px);
           margin-right: rem(20px);
           text-align: right;
           font-size: rem(14px);
         }
 
-        .#{$primaryClsName}-body-email-input {
+        .#{$primaryClsName}-body-input-input {
           @include input-reset();
           width: rem(376px);
           margin-right: rem(20px);
           height: rem(40px);
           padding-left: rem(18px);
         }
-      }
 
-      .#{$primaryClsName}-body-phone {
-        @include flex-container(row, space-around, center);
-        padding-top: rem(14px);
-
-        .#{$primaryClsName}-body-phone-label {
-          width: rem(56px);
-          margin-right: rem(20px);
-          text-align: right;
-          font-size: rem(14px);
-        }
-
-        .#{$primaryClsName}-body-phone-input {
-          @include input-reset();
-          width: rem(376px);
-          margin-right: rem(20px);
-          height: rem(40px);
-          padding-left: rem(18px);
+        .#{$primaryClsName}-body-input-disabled {
+          background-color: #dbdbdb;
         }
       }
 
