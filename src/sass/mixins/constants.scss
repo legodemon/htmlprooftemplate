@@ -1,9 +1,13 @@
 @import "utils";
 
+//size
 $projectName: rightbinary;
 $primaryWidth: rem(1070px);
 $smallWidth: 100%;
+
+//colors
 $topLevelBg: #4d5c6b;
 $dropDownBg: #2a3e4f;
 $primaryWhite: #e4e8e9;
 $primaryBlack: #333333;
+$disabledColor: #dbdbdb;

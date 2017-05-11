@@ -10,33 +10,43 @@ export default class SignIn extends React.Component {
     state = {
         showModal: false,
         pending: false,
+        email: '',
+        password: '',
         error: ''
     };
 
-    handleOpenModal = () => this.setState(state => ({showModal: true}));
+    handleOpenModal = () => (!this.state.pending) && this.setState(state => ({showModal: true}));
 
-    handleCloseModal = () => this.setState(state => ({showModal: false}));
+    handleCloseModal = () => (!this.state.pending) && this.setState(state => ({showModal: false}));
+
+    handleInputChange = (inputName, e) => {
+        const value = e.target.value;
+        this.setState(state => ({[inputName]: value}));
+    };
 
     handleClickDone = () => {
 
-        this.setState(state => ({pending: true}));
+        if(!this.state.pending) {
 
-        const formData = new FormData;
+            this.setState(state => ({pending: true}));
 
-        formData.append('_username', 'admin');
-        formData.append('_password', '309893');
+            const formData = new FormData();
 
-        ajax('http://rightbinary.asaunin.dev.alpari-ru.dom/login_check', 'POST',
-            response => {
-                this.setState(state => ({pending: false}));
-                console.log(response)
-            },
-            () => {
-                this.setState(state => ({pending: false}));
-                console.log('error')
-            },
-            formData
-        )
+            formData.append('_username', this.state.email);
+            formData.append('_password', this.state.password);
+
+            ajax('http://rightbinary.asaunin.dev.alpari-ru.dom/login_check', 'POST',
+                response => {
+                    this.setState(state => ({pending: false}));
+                    console.log(response)
+                },
+                () => {
+                    this.setState(state => ({pending: false}));
+                    console.log('error')
+                },
+                formData
+            )
+        }
     };
 
     render() {
@@ -59,6 +69,7 @@ export default class SignIn extends React.Component {
                         <input
                             className={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
                             disabled={this.state.pending}
+                            onChange={this.handleInputChange.bind(this, 'email') }
                             type="text" placeholder='Email'/>
                     </div>
 
@@ -67,14 +78,23 @@ export default class SignIn extends React.Component {
                         <input
                             className={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
                             disabled={this.state.pending}
+                            onChange={this.handleInputChange.bind(this, 'password') }
                             type="password" placeholder='******'/>
                     </div>
                 </div>
                 <div className={`${primaryClsName}-footer`}>
-                    <div className={`${constants.projectName}-button-standard-grey`} onClick={this.handleCloseModal}>
+                    <div className={cx(`${constants.projectName}-button-standard-grey`, {
+                        [`${constants.projectName}-stripes`]: this.state.pending,
+                        [`${constants.projectName}-button-disabled`]: this.state.pending
+                    })}
+                         onClick={this.handleCloseModal}>
                         Отмена
                     </div>
-                    <div className={`${constants.projectName}-button-standard-orange`} onClick={this.handleClickDone}>
+                    <div className={cx(`${constants.projectName}-button-standard-orange`, {
+                        [`${constants.projectName}-stripes`]: this.state.pending,
+                        [`${constants.projectName}-button-disabled`]: this.state.pending
+                    })}
+                         onClick={this.handleClickDone}>
                         Готово
                     </div>
                 </div>

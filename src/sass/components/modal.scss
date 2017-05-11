@@ -63,7 +63,7 @@
         }
 
         .#{$primaryClsName}-body-input-disabled {
-          background-color: #dbdbdb;
+          background-color: $disabledColor;
         }
       }
 
