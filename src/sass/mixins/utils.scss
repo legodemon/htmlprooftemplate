@@ -50,6 +50,27 @@ $baseFontSize: 16;
   background-size: $width $height;
 }
 
+@mixin input-reset(){
+  background-color: white;
+  user-select: text;
+  cursor: auto;
+  padding: 0;
+  border: none;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0;
+  &:focus {
+    outline: none;
+  }
+}
+
 @function get-image-path($icon) {
   $parts: explode($icon, '_');
   $path: "";

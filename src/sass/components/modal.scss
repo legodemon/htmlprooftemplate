@@ -45,28 +45,49 @@
     .#{$primaryClsName}-body {
 
       .#{$primaryClsName}-body-email {
-
+        @include flex-container(row, space-around, center);
+        padding-top: rem(18px);
         .#{$primaryClsName}-body-email-label {
-
+          width: rem(56px);
+          margin-right: rem(20px);
+          text-align: right;
+          font-size: rem(14px);
         }
 
         .#{$primaryClsName}-body-email-input {
-
+          @include input-reset();
+          width: rem(376px);
+          margin-right: rem(20px);
+          height: rem(40px);
+          padding-left: rem(18px);
         }
       }
 
       .#{$primaryClsName}-body-phone {
+        @include flex-container(row, space-around, center);
+        padding-top: rem(14px);
 
         .#{$primaryClsName}-body-phone-label {
-          color: red;
+          width: rem(56px);
+          margin-right: rem(20px);
+          text-align: right;
+          font-size: rem(14px);
         }
 
         .#{$primaryClsName}-body-phone-input {
-
+          @include input-reset();
+          width: rem(376px);
+          margin-right: rem(20px);
+          height: rem(40px);
+          padding-left: rem(18px);
         }
       }
 
       .#{$primaryClsName}-body-desc {
+        width: rem(376px);
+        font-size: rem(14px);
+        margin-top: rem(8px);
+        margin-left: 16%;
       }
 
     }
@@ -76,6 +97,7 @@
       height: rem(57px);
       width: 100%;
       background-color: #485663;
+      margin-top: rem(22px);
 
       .#{$projectName}-button-standard-grey {
         margin-right: rem(5px);

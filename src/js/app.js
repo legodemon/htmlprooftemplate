@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Modal from 'react-modal';
 
-import SignIn from './forms/signin.jsx';
+import SignIn from './forms/SignIn.jsx';
+import SignUp from './forms/SignUp.jsx';
+
 import baliStart from './utils/binaryplatform.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    const appEl = document.querySelector('#signInBtn');
-
-    Modal.setAppElement(appEl);
 
     [].forEach.call(document.querySelectorAll('.nav li'), element => {
         element.addEventListener('mouseenter', () => element.classList.add('hover'));
@@ -19,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     baliStart();
 
-    ReactDom.render((<SignIn/>), appEl);
+    const signUp = document.querySelector('#signUp'),
+        signIn = document.querySelector('#signIn');
+
+    Modal.setAppElement(signUp);
+    Modal.setAppElement(signIn);
+
+    ReactDom.render((<SignUp/>), signUp);
+    ReactDom.render((<SignIn/>), signIn);
 
 });

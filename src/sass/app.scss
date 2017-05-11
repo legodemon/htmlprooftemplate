@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  //--------------------------------------
 
   margin: 0;
 
@@ -205,6 +206,9 @@ body {
         }
 
         width: $primaryWidth;
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
         margin-top: rem(60px);
         margin-bottom: rem(75px);
 
@@ -359,6 +363,10 @@ body {
       .#{$projectName}-payment-email {
         @include flex-container(column, center, center);
         width: $primaryWidth;
+
+        @include apply-to(less-than) {
+          width: $smallWidth;
+        }
         margin-bottom: rem(80px);
 
         .#{$projectName}-payment-email-title {
@@ -371,28 +379,15 @@ body {
           height: rem(40px);
           font-size: rem(24px);
 
-          background-color: white;
-          user-select: text;
-          cursor: auto;
+          @include input-reset();
+
+          margin-bottom: rem(21px);
+
           padding: rem(1px);
           border-width: rem(2px);
           border-style: solid;
           border-color: #d3d3d3;
           border-image: initial;
-          text-rendering: auto;
-          color: initial;
-          letter-spacing: normal;
-          word-spacing: normal;
-          text-transform: none;
-          text-indent: 0;
-          text-shadow: none;
-          display: inline-block;
-          text-align: start;
-          margin: 0;
-          margin-bottom: rem(21px);
-          &:focus {
-            outline: none;
-          }
         }
 
         .#{$projectName}-payment-email-send {

@@ -27,7 +27,7 @@ nav, ul, li, a {
     color: $primaryWhite;
   }
 
-  #registrationBtn {
+  #signUp {
     float: right;
     padding: rem(5px) rem(5px);
     a {
@@ -38,7 +38,7 @@ nav, ul, li, a {
     }
   }
 
-  #signInBtn {
+  #signIn {
     float: right;
 
     padding: rem(5px) rem(5px);
@@ -52,7 +52,7 @@ nav, ul, li, a {
 
   .nav {
     list-style: none;
-    width: rem(1070px);
+    width: $primaryWidth;
     margin: 0 auto;
 
     &:before {
@@ -156,6 +156,9 @@ nav, ul, li, a {
       display: block;
     }
     .nav {
+
+      width: $smallWidth;
+
       > li {
         float: none !important;
 
