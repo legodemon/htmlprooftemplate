@@ -5,6 +5,8 @@ import cx from 'classnames';
 import * as constants from '../utils/constants.js';
 import ajax from '../utils/ajax.js';
 
+import Input from './components/Input.jsx';
+
 export default class SignIn extends React.Component {
 
     state = {
@@ -13,24 +15,31 @@ export default class SignIn extends React.Component {
         error: ''
     };
 
-    handleOpenModal = () => this.setState({showModal: true});
+    handleOpenModal = () => (!this.state.pending) && this.setState(state => ({showModal: true}));
 
-    handleCloseModal = () => this.setState({showModal: false});
+    handleCloseModal = () => (!this.state.pending) && this.setState(state => ({showModal: false}));
 
     handleClickDone = () => {
+        if (!this.state.pending) {
+            this.setState(state => ({pending: true}));
 
-        this.setState(state => ({pending: true}));
+            const formData = new FormData();
 
-        ajax('http://beta.json-generator.com/api/json/get/E1bgheh0M', 'GET',
-            response => {
-                this.setState(state => ({pending: false}));
-                console.log(response)
-            },
-            () => {
-                this.setState(state => ({pending: false}));
-                console.log('error')
-            }
-        )
+            formData.append('_username', this.email.getValue());
+            formData.append('_password', this.phone.getValue());
+
+            ajax('http://rightbinary.asaunin.dev.alpari-ru.dom/login_check', 'POST',
+                response => {
+                    this.setState(state => ({pending: false}));
+                    console.log(response)
+                },
+                () => {
+                    this.setState(state => ({pending: false}));
+                    console.log('error')
+                },
+                formData
+            )
+        }
     };
 
     render() {
@@ -49,29 +58,42 @@ export default class SignIn extends React.Component {
                     <div className={`${primaryClsName}-header-close`} onClick={this.handleCloseModal}/>
                 </div>
                 <div className={`${primaryClsName}-body`}>
-                    <div className={`${primaryClsName}-body-input`}>
-                        <label className={`${primaryClsName}-body-input-label`}>Email</label>
-                        <input
-                            className={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
-                            disabled={this.state.pending}
-                            placeholder='Email'/>
-                    </div>
-                    <div className={`${primaryClsName}-body-input`}>
-                        <label className={`${primaryClsName}-body-input-label`}>Телефон</label>
-                        <input
-                            className={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
-                            disabled={this.state.pending}
-                            placeholder='Телефон'/>
-                    </div>
+
+                    <Input ref={instance => this.email = instance}
+                           className={`${primaryClsName}-body-input`}
+                           labelClassName={`${primaryClsName}-body-input-label`}
+                           inputClassName={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
+                           disabled={this.state.pending}
+                           label='Email'
+                           type='text'
+                           placeholder='Email'/>
+
+                    <Input ref={instance => this.phone = instance}
+                           className={`${primaryClsName}-body-input`}
+                           labelClassName={`${primaryClsName}-body-input-label`}
+                           inputClassName={cx(`${primaryClsName}-body-input-input`, {[`${primaryClsName}-body-input-disabled`]: this.state.pending})}
+                           disabled={this.state.pending}
+                           label='Телефон'
+                           type='text'
+                           placeholder='Телефон'/>
+
                     <div className={`${primaryClsName}-body-desc`}>
                         Номер телефона необходим при выводе средств из Личного кабинета
                     </div>
                 </div>
                 <div className={`${primaryClsName}-footer`}>
-                    <div className={`${constants.projectName}-button-standard-grey`} onClick={this.handleCloseModal}>
+                    <div className={cx(`${constants.projectName}-button-standard-grey`, {
+                        [`${constants.projectName}-stripes`]: this.state.pending,
+                        [`${constants.projectName}-button-disabled`]: this.state.pending
+                    })}
+                         onClick={this.handleCloseModal}>
                         Отмена
                     </div>
-                    <div className={`${constants.projectName}-button-standard-orange`} onClick={this.handleClickDone}>
+                    <div className={cx(`${constants.projectName}-button-standard-orange`, {
+                        [`${constants.projectName}-stripes`]: this.state.pending,
+                        [`${constants.projectName}-button-disabled`]: this.state.pending
+                    })}
+                         onClick={this.handleClickDone}>
                         Готово
                     </div>
                 </div>
